@@ -48,7 +48,7 @@ namespace AmazingCurveEditor
         }
     }
 
-    [KSPAddon(KSPAddon.Startup.EveryScene, false)]
+    [KSPAddon(KSPAddon.Startup.Instantly, false)]
     public class AmazingCurveEditor : MonoBehaviour
     {
         private int texWidth = 512;
@@ -270,6 +270,11 @@ namespace AmazingCurveEditor
             {
                 UpdateCurve();
             }
+        }
+        
+        private void Awake()
+        {
+            DontDestroyOnLoad(this);
         }
 
         private string CurveToString()
